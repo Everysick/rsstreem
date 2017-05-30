@@ -4,4 +4,10 @@ name = "rsstreem"
 version = "0.1.0"
 
 [dependencies]
-combine = "2.3.2"
+clap = "2.24.2"
+
+[dependencies.rsstreem]
+path = "core"
+
+[dependencies.rsstreem-parser]
+path = "parser"
