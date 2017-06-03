@@ -1,0 +1,12 @@
+[package]
+authors = ["everysick <s.wakeup31@gmail.com>"]
+name = "rsstreem-parser"
+version = "0.1.0"
+
+[dependencies]
+combine = "2.3.2"
+combine-language = "2.0.0"
+
+[dependencies.rsstreem]
+optional = false
+path = "../core"
