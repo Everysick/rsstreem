@@ -1,6 +1,6 @@
 [package]
 authors = ["everysick <s.wakeup31@gmail.com>"]
-name = "rsstreem"
+name = "rsstreem-language"
 version = "0.1.0"
 
 [dependencies]

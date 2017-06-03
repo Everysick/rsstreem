@@ -5,3 +5,5 @@ machine:
 test:
   override:
     - docker run -it --rm -v $(pwd):/source -w /source scorpil/rust:1.17 cargo test
+    - docker run -it --rm -v $(pwd):/source -w /source scorpil/rust:1.17 cargo test -p rsstreem
+    - docker run -it --rm -v $(pwd):/source -w /source scorpil/rust:1.17 cargo test -p rsstreem-parser
