@@ -1,3 +1,5 @@
+use std::cell::RefCell;
+
 #[derive(Debug, PartialEq)]
 pub enum Biop {
     Plus,
@@ -19,14 +21,23 @@ pub enum Ast {
     Int(i64),
     Float,
     Time,
-    Str,
+    Var(String),
     Nil,
     Bool,
-    Args,
+    Args { data: Vec<Box<Ast>> },
     Pair,
     Cfunc,
-    Lambda,
-    Plambda,
+    Lambda {
+        args: Box<Ast>,
+        body: Box<Ast>,
+        block: i64,
+    },
+    Plambda {
+        pat: Box<Ast>,
+        cond: Box<Ast>,
+        body: Box<Ast>,
+        next: RefCell<Vec<Box<Ast>>>,
+    },
     Parray,
     Pstruct,
     Psplat,
@@ -37,7 +48,6 @@ pub enum Ast {
     Emit,
     Skip,
     Return,
-    Var,
     Const,
     Op {
         op: Biop,
@@ -51,4 +61,5 @@ pub enum Ast {
     Nodes,
     Ns,
     Imort,
+    Null,
 }
