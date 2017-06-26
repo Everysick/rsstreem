@@ -16,10 +16,9 @@ fn main() {
         .version(crate_version!())
         .author("everysick <s.wakeup31@gmail.com>")
         .about("Implementation of streem by Rust.")
-        .arg(Arg::with_name("file")
-                 .short("f")
-                 .long("file")
-                 .help("Target file for execute"))
+        .arg(Arg::with_name("file").short("f").long("file").help(
+            "Target file for execute",
+        ))
         .get_matches();
 
     // Some code is not verified yet.
@@ -30,11 +29,11 @@ fn main() {
         let code = File::open(&path)
             .map_err(|error| String::from(error.description()))
             .and_then(|mut file| {
-                          let mut s = String::new();
-                          file.read_to_string(&mut s)
-                              .map_err(|error| String::from(error.description()))
-                              .map(|_| s)
-                      })
+                let mut s = String::new();
+                file.read_to_string(&mut s)
+                    .map_err(|error| String::from(error.description()))
+                    .map(|_| s)
+            })
             .unwrap();
 
         let ast = parse::parse_code(code.as_ref()).unwrap();
